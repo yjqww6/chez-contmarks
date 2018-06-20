@@ -41,9 +41,7 @@
          [else (loop (#%$continuation-link c))])))))
 
   (define (current-continuation-marks)
-    (call/1cc
-     (lambda (cc)
-       (continuation-marks cc))))
+    (continuation-marks (#%$current-stack-link)))
 
   (define-syntax with-continuation-mark
     (syntax-rules ()
